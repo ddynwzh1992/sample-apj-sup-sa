@@ -313,6 +313,9 @@ def train_func(config: Dict[str, Any]):
     if rank == 0:
         logger.info("Training completed!")
 
+    if dist.is_initialized():
+        dist.destroy_process_group()
+
 
 def main():
     """Main entry point for Ray Train distributed training."""

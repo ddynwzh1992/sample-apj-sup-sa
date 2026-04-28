@@ -23,7 +23,7 @@ patches:
     patch: |-
       - op: replace
         path: /metadata/annotations/eks.amazonaws.com~1role-arn
-        value: "arn:aws:iam::147997139658:role/genai-eks-dev-training-s3"
+        value: "PLACEHOLDER_ROLE_ARN"
 
   # Patch S3 ConfigMap with bucket name and paths
   - target:
@@ -32,10 +32,10 @@ patches:
     patch: |-
       - op: replace
         path: /data/bucket_name
-        value: "genai-eks-dev-147997139658-ml-training"
+        value: "PLACEHOLDER_BUCKET"
       - op: replace
         path: /data/ray_storage_path
-        value: "s3://genai-eks-dev-147997139658-ml-training/ray"
+        value: "s3://PLACEHOLDER_BUCKET/ray"
       - op: replace
         path: /data/output_path
-        value: "s3://genai-eks-dev-147997139658-ml-training/outputs"
+        value: "s3://PLACEHOLDER_BUCKET/outputs"

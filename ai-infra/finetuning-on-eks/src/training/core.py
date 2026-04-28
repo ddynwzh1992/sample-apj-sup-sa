@@ -159,7 +159,9 @@ def load_model_and_tokenizer(
     if bnb_config is not None:
         model_kwargs["quantization_config"] = bnb_config
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name, trust_remote_code=model_kwargs["trust_remote_code"]
+    )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
         tokenizer.pad_token_id = tokenizer.eos_token_id

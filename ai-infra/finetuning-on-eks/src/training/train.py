@@ -109,6 +109,10 @@ def main():
 
     save_model(trainer, tokenizer, config.output_dir, use_fsdp=config.use_fsdp)
 
+    if is_distributed:
+        import torch.distributed as dist
+        dist.destroy_process_group()
+
 
 if __name__ == "__main__":
     main()
