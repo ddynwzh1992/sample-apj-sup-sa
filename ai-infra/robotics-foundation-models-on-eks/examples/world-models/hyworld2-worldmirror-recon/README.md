@@ -9,6 +9,9 @@ Files:
 
 Run the validation:
 
+On a scale-to-zero cluster, prewarm is required for this GPU workflow because
+OSMO validates platform capacity before Karpenter can provision a node.
+
 ```bash
 GPU_PREWARM_INSTANCE_TYPE=g7e.4xlarge infra/kubernetes/prewarm-gpu-node.sh
 SMOKE_SET_NGC_CREDENTIAL=true \

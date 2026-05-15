@@ -2,7 +2,9 @@
 
 OSMO-submitted GPU smoke workflow. It requests the AWS G7e OSMO platform and runs `nvidia-smi`.
 
-OSMO validates workflow resources against currently visible backend capacity, so prewarm a G7e node first:
+OSMO validates workflow resources against currently visible backend capacity.
+On a scale-to-zero cluster, prewarm is required for this GPU workflow; otherwise
+submission fails before Karpenter can provision a node.
 
 ```bash
 GPU_PREWARM_INSTANCE_TYPE=g7e.2xlarge infra/kubernetes/prewarm-gpu-node.sh

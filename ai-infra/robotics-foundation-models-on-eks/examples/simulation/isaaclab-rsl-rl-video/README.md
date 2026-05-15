@@ -4,6 +4,9 @@ Isaac Lab RSL-RL workflow for `Isaac-Reach-Franka-v0`. It trains for a bounded n
 
 Run it through the repo wrapper:
 
+On a scale-to-zero cluster, prewarm is required for this GPU workflow because
+OSMO validates platform capacity before Karpenter can provision a node.
+
 ```bash
 GPU_PREWARM_INSTANCE_TYPE=g7e.2xlarge infra/kubernetes/prewarm-gpu-node.sh
 SMOKE_SET_NGC_CREDENTIAL=true \

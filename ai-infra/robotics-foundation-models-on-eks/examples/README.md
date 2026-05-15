@@ -69,6 +69,10 @@ Submit single-workflow examples directly with
 credentials, submission, logs, and timeout handling. For multistage examples,
 follow the example README or submit the numbered workflow files in order.
 
-GPU workflows need visible G7e or G6e capacity before OSMO resource validation.
+GPU and EFA workflows need visible G7e or G6e capacity before OSMO resource
+validation. On a scale-to-zero cluster, OSMO rejects these submissions before a
+pending pod can trigger Karpenter provisioning, with errors such as
+`There are no resources in platform g7e-rtx-pro-6000 and pool default!`.
 Use `infra/kubernetes/prewarm-gpu-node.sh` before submission and
-`infra/kubernetes/wait-gpu-node-cleanup.sh` after completion.
+`infra/kubernetes/wait-gpu-node-cleanup.sh` after completion. CPU-only examples
+such as `cpu-workflow` and `parallel-eval` do not require prewarm.

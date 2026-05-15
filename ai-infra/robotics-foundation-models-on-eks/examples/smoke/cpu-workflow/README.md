@@ -2,6 +2,8 @@
 
 CPU-only smoke workflow for the OSMO control plane and backend.
 
+No GPU prewarm is required.
+
 Run it through the repo wrapper:
 
 ```bash

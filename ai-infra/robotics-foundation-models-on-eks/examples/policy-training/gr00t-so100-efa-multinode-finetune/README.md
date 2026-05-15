@@ -42,9 +42,21 @@ Prerequisites:
 
 Run the bounded smoke:
 
+On a scale-to-zero cluster, prewarm is required for this EFA workflow because
+OSMO validates `g6e-l40s-efa` capacity before Karpenter can provision a node.
+The workflow still requests two distinct EFA nodes for the training ranks.
+
 ```bash
-cd examples/policy-training/gr00t-so100-efa-multinode-finetune
-osmo workflow submit workflow.yaml --pool default
+GPU_PREWARM_INSTANCE_TYPE=g6e.8xlarge \
+  GPU_PREWARM_EFA=true \
+  infra/kubernetes/prewarm-gpu-node.sh
+
+(
+  cd examples/policy-training/gr00t-so100-efa-multinode-finetune
+  osmo workflow submit workflow.yaml --pool default
+)
+
+infra/kubernetes/wait-gpu-node-cleanup.sh
 ```
 
 The workflow injects [entry.sh](entry.sh) and the local Isaac-GR00T

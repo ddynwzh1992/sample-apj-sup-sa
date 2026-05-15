@@ -4,6 +4,10 @@ Small CPU/GPU/CPU workflow that models a typical policy pipeline shape: inspect 
 
 Run it through the repo wrapper:
 
+This workflow includes a GPU step. On a scale-to-zero cluster, prewarm is
+required before submission because OSMO validates platform capacity before
+Karpenter can provision a node.
+
 ```bash
 GPU_PREWARM_INSTANCE_TYPE=g7e.2xlarge infra/kubernetes/prewarm-gpu-node.sh
 SMOKE_SET_NGC_CREDENTIAL=true \

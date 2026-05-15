@@ -9,6 +9,9 @@ Files:
 
 Run the local NIM validation:
 
+On a scale-to-zero cluster, prewarm is required for the local NIM server path
+because OSMO validates platform capacity before Karpenter can provision a node.
+
 ```bash
 GPU_PREWARM_INSTANCE_TYPE=g7e.4xlarge infra/kubernetes/prewarm-gpu-node.sh
 SMOKE_SET_NGC_CREDENTIAL=true \

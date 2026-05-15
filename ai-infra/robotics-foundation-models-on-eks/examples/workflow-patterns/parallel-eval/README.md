@@ -2,6 +2,8 @@
 
 Small OSMO `groups` example that fans out four CPU evaluation shards and aggregates their metrics.
 
+No GPU prewarm is required.
+
 Run it through the repo wrapper:
 
 ```bash
